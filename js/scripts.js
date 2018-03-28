@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var studentEmail = "";
-	var queryUrl = ""
-	var realurl= "https://user-api.udacity.com/users?email=lyman%40udacity.com"
+	var queryUrl = "";
+	var realurl= "https://user-api.udacity.com/users?email=lyman%40udacity.com";
 	$("form").on("submit", function(event){
 		studentEmail = ($("form").serialize());
 		queryUrl = "https://user-api.udacity.com/users?" + studentEmail;
@@ -11,11 +11,11 @@ $(document).ready(function(){
 			url: realurl,
 			dataType:'JSONP',
 			jsonp: false,
-			jsonpCallback: 'jsonpCallback',
+			// jsonpCallback: 'apiStatus',
 			crossDomain: true,
 			contentType: "text/plain",
 			headers: {
-			    'Access-Control-Allow-Origin': 'http://localhost:9090'
+			    'Access-Control-Allow-Origin': 'https://u-schecker.herokuapp.com/'
 			},
 			success: function(response)
 			{
