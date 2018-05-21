@@ -1,11 +1,12 @@
 $(document).ready(function(){
 	var studentEmail = "";
 	var queryUrl = "";
-	var realurl= "https://user-api.udacity.com/users?email=lyman%40udacity.com";
+	var realurl= "https://user-api.udacity.com/users?email=lymanwong%40gmail.com";
 	$("form").on("submit", function(event){
 		studentEmail = ($("form").serialize());
 		queryUrl = "https://user-api.udacity.com/users?" + studentEmail;
 		event.preventDefault();
+		$.support.cors = true;
 		$.ajax({
 			type: 'GET',
 			url: realurl,
@@ -15,15 +16,16 @@ $(document).ready(function(){
 			crossDomain: true,
 			contentType: "text/plain",
 			headers: {
-			    'Access-Control-Allow-Origin': 'https://u-schecker.herokuapp.com/'
+			    'X-authorization-name': 'dmnd-facebook-ad-manager'
 			},
 			success: function(response)
 			{
 				console.log('callback success: ', response);
 			},
-			error: function(xhr, status, error)
+			error: function(xhr, status, error, response)
 			{
 				console.log(status + " " + error);
+				console.log(xhr);
 			}
 		});
 	});
